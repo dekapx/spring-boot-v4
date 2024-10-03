@@ -6,8 +6,8 @@ For further reference, please consider the following sections:
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.3.2/maven-plugin)
 * [Create an OCI image](https://docs.spring.io/spring-boot/3.3.2/maven-plugin/build-image.html)
-* [Swagger] (http://localhost:8082/credit-rating-service/api/v1/info)
-* http://localhost:8082/credit-rating-service/swagger-ui/index.html
+* [Info URL](http://localhost:8082/credit-rating-service/api/v1/info)
+* [Swagger](http://localhost:8082/credit-rating-service/swagger-ui/index.html)
 
 
 ## Credit Rating Service    [credit-rating-service]

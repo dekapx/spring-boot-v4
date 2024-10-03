@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: event-interceptor-service
+    profiles:
+        active: local
+server:
+    port: ${SERVER_PORT:8083}
+    servlet:
+        context-path: ${CONTEXT_PATH:/event-interceptor-service}
