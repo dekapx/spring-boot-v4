@@ -28,6 +28,7 @@ public class LoanEligibilityController {
                     content = @Content)})
     @GetMapping(INFO_URL)
     public String getInfo() {
+        log.info("Loan Service API v1.0");
         return "Loan Service API v1.0";
     }
 }

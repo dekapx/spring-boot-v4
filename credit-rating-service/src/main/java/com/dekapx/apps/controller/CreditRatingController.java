@@ -28,6 +28,7 @@ public class CreditRatingController {
                     content = @Content)})
     @GetMapping(INFO_URL)
     public String getInfo() {
+        log.info("");
         return "Credit Rating Service API v1.0";
     }
 }
