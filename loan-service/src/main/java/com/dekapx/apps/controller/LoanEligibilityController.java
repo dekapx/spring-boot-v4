@@ -20,7 +20,6 @@ import static com.dekapx.apps.common.ResourceUrls.INFO_URL;
 @RequestMapping(BASE_URL)
 @AllArgsConstructor
 public class LoanEligibilityController {
-
     @Operation(summary = "Loan Service API Info")
     @ApiResponses(value = {
             @ApiResponse(
