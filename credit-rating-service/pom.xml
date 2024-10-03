@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>23</java.version>
+        <lombok.version>1.18.34</lombok.version>
         <springdoc-openapi-starter.version>2.6.0</springdoc-openapi-starter.version>
     </properties>
 
@@ -55,6 +56,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
