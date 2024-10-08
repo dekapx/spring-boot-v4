@@ -6,7 +6,7 @@ import java.beans.Introspector;
 
 @UtilityClass
 public class BeanUtils {
-    public static String generateBeanName(final Class clazz) {
+    public static String generateServiceLocatorLookupBeanName(final Class clazz) {
         return Introspector.decapitalize(clazz.getSimpleName());
     }
 }

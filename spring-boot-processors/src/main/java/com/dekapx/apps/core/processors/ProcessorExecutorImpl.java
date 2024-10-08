@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-import static com.dekapx.apps.core.utils.BeanUtils.generateBeanName;
+import static com.dekapx.apps.core.utils.BeanUtils.generateServiceLocatorLookupBeanName;
 
 @Slf4j
 @Component
@@ -30,5 +30,5 @@ public class ProcessorExecutorImpl implements ProcessorExecutor {
     }
 
     private BiConsumer<Class<Processor>, List<Processor>> toProcessorBean = (processorType, processors) ->
-            processors.add(this.processorFactory.getProcessor(generateBeanName(processorType)));
+            processors.add(this.processorFactory.getProcessor(generateServiceLocatorLookupBeanName(processorType)));
 }
