@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import static com.dekapx.apps.common.ResourceUrls.CREDIT_SCORE_URL;
 import static com.dekapx.apps.common.ResourceUrls.INFO_URL;
 
-@FeignClient(name = "creditScoreClient", url = "${feign.client.config.creditScoreClient.url}")
+@FeignClient(value = "credit-rating-service", path = "/api/v1")
 public interface CreditScoreClient {
     @GetMapping(INFO_URL)
     String getInfo();

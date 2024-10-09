@@ -1,5 +1,0 @@
-feign:
-  client:
-    config:
-      creditScoreClient:
-        url: 'http://localhost:8082/credit-rating-service/api/v1'

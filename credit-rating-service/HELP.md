@@ -4,8 +4,8 @@
 For further reference, please consider the following sections:
 
 ### Credit Rating Service URLs
-* [Info URL](http://localhost:8082/credit-rating-service/api/v1/info)
-* [Swagger](http://localhost:8082/credit-rating-service/swagger-ui/index.html)
+* [Info URL](http://localhost:8082/api/v1/info)
+* [Swagger](http://localhost:8082/swagger-ui/index.html)
 
 
 ## Credit Rating Service    [credit-rating-service]
