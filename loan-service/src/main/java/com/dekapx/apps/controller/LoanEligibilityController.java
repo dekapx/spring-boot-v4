@@ -7,10 +7,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,6 +48,6 @@ public class LoanEligibilityController {
     public ResponseEntity<LoanEligibilityResponse> checkLoanEligibility(@RequestBody LoanEligibilityRequest request) {
         log.info("Loan Eligibility request received for SSN [{}]", request.getSsn());
         final LoanEligibilityResponse response = this.loanEligibilityService.checkLoanEligibility(request);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return ResponseEntity.ok(response);
     }
 }

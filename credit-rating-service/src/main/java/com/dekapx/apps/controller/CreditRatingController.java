@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,6 +48,6 @@ public class CreditRatingController {
     public ResponseEntity<CreditScoreResponse> getCreditScore(@RequestBody CreditScoreRequest request) {
         log.info("Credit Score request received for SSN [{}]", request.getSsn());
         final CreditScoreResponse response = this.creditScoreService.getCreditScore(request);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return ResponseEntity.ok(response);
     }
 }
