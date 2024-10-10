@@ -8,6 +8,7 @@
         <version>3.3.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.dekapx.apps</groupId>
     <artifactId>spring-boot-processors</artifactId>
     <version>0.0.1-SNAPSHOT</version>
