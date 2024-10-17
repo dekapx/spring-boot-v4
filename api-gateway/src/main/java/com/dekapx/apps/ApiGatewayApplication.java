@@ -1,4 +1,4 @@
-package com.dekapx.apps.api_gateway;
+package com.dekapx.apps;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
