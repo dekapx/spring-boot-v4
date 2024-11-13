@@ -19,6 +19,7 @@
         <java.version>23</java.version>
         <lombok.version>1.18.34</lombok.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <resilience4j-circuitbreaker.version>2.2.0</resilience4j-circuitbreaker.version>
         <spring-cloud-starter-openfeign.version>4.1.3</spring-cloud-starter-openfeign.version>
         <springdoc-openapi-starter.version>2.6.0</springdoc-openapi-starter.version>
     </properties>
@@ -27,6 +28,19 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-circuitbreaker</artifactId>
+            <version>${resilience4j-circuitbreaker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

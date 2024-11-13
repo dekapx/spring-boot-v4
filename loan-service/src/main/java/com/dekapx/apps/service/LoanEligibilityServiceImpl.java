@@ -7,7 +7,6 @@ import com.dekapx.apps.model.LoanEligibilityRequest;
 import com.dekapx.apps.model.LoanEligibilityResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import static com.dekapx.apps.model.ApplicationStatus.PENDING;
@@ -21,8 +20,11 @@ public class LoanEligibilityServiceImpl implements LoanEligibilityService {
     @Override
     public LoanEligibilityResponse checkLoanEligibility(LoanEligibilityRequest request) {
         CreditScoreRequest creditScoreRequest = toCreditScoreRequest(request);
-        ResponseEntity<CreditScoreResponse> responseEntity = this.creditScoreClient.getCreditScore(creditScoreRequest);
-        return toLoanEligibilityResponse(responseEntity.getBody());
+        return toLoanEligibilityResponse(invokeCreditScoreService(creditScoreRequest));
+    }
+
+    private CreditScoreResponse invokeCreditScoreService(CreditScoreRequest creditScoreRequest ) {
+        return this.creditScoreClient.getCreditScore(creditScoreRequest).getBody();
     }
 
     private CreditScoreRequest toCreditScoreRequest(LoanEligibilityRequest request) {
