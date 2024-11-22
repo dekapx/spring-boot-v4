@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: spring-boot-graphql
+    profiles:
+        active: local
+server:
+    port: ${SERVER_PORT:8085}
+    servlet:
+        context-path: ${CONTEXT_PATH:/spring-boot-graphql}
