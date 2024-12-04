@@ -1,0 +1,17 @@
+schema {
+    query: Query
+}
+type Query {
+    findUserById(id: ID): User
+    findAll: [User]
+}
+
+type User {
+    id: ID!
+    username: String
+    firstName: String
+    lastName: String
+    email: String
+}
+
+

@@ -1,9 +1,22 @@
-spring:
-    application:
-        name: spring-boot-graphql
-    profiles:
-        active: local
 server:
     port: ${SERVER_PORT:8085}
     servlet:
         context-path: ${CONTEXT_PATH:/spring-boot-graphql}
+spring:
+    main:
+        allow-circular-references: true
+    application:
+        name: spring-boot-batch
+    profiles:
+        active: local
+    datasource:
+        username: ${POSTGRES_USERNAME:postgres}
+        password: ${POSTGRES_PASSWORD:passw0rd}
+        url: jdbc:postgresql://localhost:5432/postgres
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: false
