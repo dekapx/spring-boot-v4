@@ -1,11 +1,3 @@
-schema {
-    query: Query
-}
-type Query {
-    findUserById(id: ID): User
-    findAll: [User]
-}
-
 type User {
     id: ID!
     username: String
@@ -14,4 +6,15 @@ type User {
     email: String
 }
 
+type UserModel {
+    id: ID!
+    username: String
+    firstName: String
+    lastName: String
+    email: String
+}
 
+type Query{
+    findAll: [UserModel]
+    findById(id: ID!): UserModel
+}

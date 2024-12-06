@@ -9,6 +9,9 @@ spring:
         name: spring-boot-batch
     profiles:
         active: local
+    graphql:
+        graphiql:
+            enabled: true
     datasource:
         username: ${POSTGRES_USERNAME:postgres}
         password: ${POSTGRES_PASSWORD:passw0rd}
