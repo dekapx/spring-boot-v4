@@ -10,8 +10,16 @@ spring:
     profiles:
         active: local
     graphql:
+        servlet:
+            enabled: true
+            mapping: /graphql
+            cors-enabled: true
         graphiql:
             enabled: true
+            path: /graphiql
+        playground:
+            enabled: true
+            path: /playground
     datasource:
         username: ${POSTGRES_USERNAME:postgres}
         password: ${POSTGRES_PASSWORD:passw0rd}
