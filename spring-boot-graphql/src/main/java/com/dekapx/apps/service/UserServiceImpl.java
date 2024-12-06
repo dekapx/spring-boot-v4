@@ -1,6 +1,7 @@
 package com.dekapx.apps.service;
 
 import com.dekapx.apps.entity.User;
+import com.dekapx.apps.exception.ResourceNotFoundException;
 import com.dekapx.apps.model.UserModel;
 import com.dekapx.apps.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService {
     public UserModel findById(Long Id) {
         return toUserModel(this.userRepository
                 .findById(Id)
-                .orElse(null));
+                .orElseThrow(() -> new ResourceNotFoundException("User with id [" + Id + "] not found")));
     }
 
     private List<UserModel> toUserModels(List<User> users) {
