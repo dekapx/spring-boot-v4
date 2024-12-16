@@ -18,3 +18,14 @@ type Query{
     findAll: [UserModel]
     findById(id: ID!): UserModel
 }
+
+input CreateUserRequest {
+    username: String
+    firstName: String
+    lastName: String
+    email: String
+}
+
+type Mutation {
+    createUser(request: CreateUserRequest!): UserModel
+}

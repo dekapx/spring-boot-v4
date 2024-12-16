@@ -1,10 +1,12 @@
 package com.dekapx.apps.controller;
 
+import com.dekapx.apps.model.CreateUserRequest;
 import com.dekapx.apps.model.UserModel;
 import com.dekapx.apps.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,4 +39,10 @@ public class UserController {
     public UserModel findById(@Argument Long id) {
         return this.userService.findById(id);
     }
+
+    @MutationMapping
+    public UserModel createUser(@Argument CreateUserRequest request) {
+        return this.userService.create(request);
+    }
+
 }

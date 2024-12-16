@@ -6,7 +6,7 @@ spring:
     main:
         allow-circular-references: true
     application:
-        name: spring-boot-batch
+        name: spring-boot-graphql
     profiles:
         active: local
     graphql:
