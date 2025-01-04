@@ -26,22 +26,34 @@ public class EmployeeServiceTest {
                     assertThat(e.getId()).isEqualTo(1L);
                     assertThat(e.getFirstName()).isEqualTo("John");
                     assertThat(e.getLastName()).isEqualTo("Doe");
-                    assertThat(e.getEmail()).isEmpty();
+                    assertThat(e.getEmail()).isEqualTo("John.Doe@hotmail.com");
                     assertThat(e.getDepartment()).isEqualTo(IT);
                 });
     }
 
     @Test
-    public void shouldReturnAllEmployees() {
+    public void shouldReturnAllEmployees1() {
+        var employees = employeeService.findAll();
+        assertThat(employees)
+                .isNotNull()
+                .isNotEmpty()
+                .hasSize(3)
+                .anySatisfy(e -> {
+                    assertThat(e.getFirstName()).isEqualTo("John");
+                    assertThat(e.getLastName()).isEqualTo("Doe");
+                    assertThat(e.getEmail()).isEqualTo("John.Doe@hotmail.com");
+                    assertThat(e.getDepartment()).isEqualTo(IT);
+                });
+    }
+
+    @Test
+    public void shouldReturnAllEmployees2() {
         var employees = employeeService.findAll();
         assertThat(employees)
                 .isNotNull()
                 .isNotEmpty()
                 .hasSize(3)
                 .allSatisfy(e -> {
-                    assertThat(e.getFirstName()).isEqualTo("John");
-                    assertThat(e.getLastName()).isEqualTo("Doe");
-                    assertThat(e.getEmail()).isEmpty();
                     assertThat(e.getDepartment()).isEqualTo(IT);
                 });
     }
