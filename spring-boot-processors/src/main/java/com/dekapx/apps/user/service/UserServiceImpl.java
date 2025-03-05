@@ -17,7 +17,10 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Override
     @PreProcessor(processorTypes = {BackgroundCheckProcessor.class})
-    @PostProcessor(processorTypes = {UserAccountSetupProcessor.class, UserEntitlmentsProcessor.class, UserPayrollSetupProcessor.class})
+    @PostProcessor(processorTypes = {
+            UserAccountSetupProcessor.class,
+            UserEntitlmentsProcessor.class,
+            UserPayrollSetupProcessor.class})
     public void userOnboarding(UserOnboardingRequest request) {
         log.info("Perform UserOnboarding process for [{}]...", request.getFirstName());
     }
