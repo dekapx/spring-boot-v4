@@ -5,7 +5,6 @@ import com.dekapx.apps.model.FileModel;
 import com.dekapx.apps.writer.FileWriter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -16,7 +15,8 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void write(FileModel fileModel) {
-        FileWriter fileWriter = this.fileWriterFactory.getFileWriter(fileModel.getFileType().getFactoryBeanName());
+        FileWriter fileWriter = this.fileWriterFactory
+                .getFileWriter(fileModel.getFileType().getFactoryBeanName());
         fileWriter.write(fileModel.getContents());
     }
 }
