@@ -1,0 +1,8 @@
+services:
+    app:
+        image: myapp:latest
+        environment:
+        - APP_ENV=production
+        - APP_DEBUG=false
+        restart: always
+

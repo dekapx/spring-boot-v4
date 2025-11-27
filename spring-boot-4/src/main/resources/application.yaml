@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: spring-boot-4
+    port: 9090

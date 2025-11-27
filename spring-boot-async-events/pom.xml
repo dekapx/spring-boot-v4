@@ -6,22 +6,21 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.7</version>
-		<relativePath/>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-
 	<groupId>com.dekapx.apps</groupId>
-	<artifactId>service-locator-factory</artifactId>
+	<artifactId>spring-boot-async-events</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service-locator-factory</name>
-	<description>SpringBoot Service Locator Factory Bean Demo</description>
+	<name>spring-boot-async-events</name>
+	<description>Demo project for Spring Boot</description>
 
-	<properties>
-		<java.version>25</java.version>
-		<springdoc-openapi-starter.version>2.8.13</springdoc-openapi-starter.version>
-	</properties>
+    <properties>
+        <java.version>25</java.version>
+        <springdoc-openapi-starter.version>2.8.13</springdoc-openapi-starter.version>
+    </properties>
 
-	<dependencies>
-	<dependency>
+    <dependencies>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -39,8 +38,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-		</dependency>
-	</dependencies>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -70,4 +69,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
