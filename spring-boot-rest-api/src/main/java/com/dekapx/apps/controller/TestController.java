@@ -14,9 +14,16 @@ import static com.dekapx.apps.common.ResourceUrls.INFO_URL;
 @RequestMapping(BASE_URL)
 @RequiredArgsConstructor
 public class TestController {
-    @GetMapping(INFO_URL)
-    public String getInfo() {
+    @GetMapping(value = INFO_URL, version = "1.0")
+    public String getInfoV1() {
         log.info("Test Controller v1.0");
         return "Test Controller v1.0";
     }
+
+    @GetMapping(value = INFO_URL, version = "2.0")
+    public String getInfoV2() {
+        log.info("Test Controller v2.0");
+        return "Test Controller v2.0";
+    }
+
 }
