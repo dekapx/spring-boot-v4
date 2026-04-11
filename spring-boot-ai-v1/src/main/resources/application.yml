@@ -11,4 +11,5 @@ app:
     ollama:
         chat-model:
             base-url: http://localhost:11434
-            model-name: gpt-oss:20b
+            model-name: gemma4:31b
+#            model-name: gpt-oss:20b
