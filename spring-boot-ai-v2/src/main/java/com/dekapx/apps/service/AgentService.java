@@ -15,6 +15,7 @@ public class AgentService {
     public String ask(String question) {
         log.info("[Ollama/gemma4:31b] User: {}", question);
         String response = agent.chat(question);
+
         log.info("[Ollama/gemma4:31b] Response: {}", response);
         return response;
     }
