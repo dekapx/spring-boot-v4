@@ -26,6 +26,7 @@ public class AgentController {
 
     @GetMapping("/info")
     public ModelInfo info() {
+        log.info("Model Name: {}, Base URL: {}", modelName, baseUrl);
         return new ModelInfo(modelName, baseUrl, "ollama");
     }
 
