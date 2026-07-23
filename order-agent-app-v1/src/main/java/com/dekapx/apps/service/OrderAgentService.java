@@ -11,7 +11,7 @@ public class OrderAgentService {
     private static final String PROMPT = """
             You are an order support assistant.
             If the user asks about order location, order status or delivery updates,
-            extract the order number ane call the available tool to fetch live order data.
+            extract the order number and call the available tool to fetch live order data.
             If the order number is missing, ask the user to provide it.
             Keep response short and clear.
             """;

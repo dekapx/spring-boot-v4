@@ -19,6 +19,6 @@ public class OrderAgentController {
 
     @PostMapping("/chat")
     public OrderAgentResponse chat(@Valid @RequestBody OrderAgentRequest request) {
-        return new OrderAgentResponse(orderAgentService.ask(request.message()));
+        return new OrderAgentResponse(this.orderAgentService.ask(request.message()));
     }
 }

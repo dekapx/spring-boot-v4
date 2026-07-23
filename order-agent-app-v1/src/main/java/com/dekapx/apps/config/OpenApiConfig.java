@@ -13,7 +13,8 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .components(new Components())
                 .info(new Info()
-                        .title("Contact Service API")
-                        .description("Contact Service API version 1.0"));
+                        .title("Order Agent API")
+                        .description("Order Agent Service API version 1.0")
+                        .version("1.0"));
     }
 }
