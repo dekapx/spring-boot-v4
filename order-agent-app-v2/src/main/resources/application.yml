@@ -1,0 +1,38 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: ${CONTEXT_PATH:/order-agent}
+
+spring:
+  application:
+    name: order-agent
+
+  datasource:
+    username: ${POSTGRES_USERNAME:testuser}
+    password: ${POSTGRES_PASSWORD:testpassword}
+    url: jdbc:postgresql://localhost:5432/testdb
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: always
+      platform: postgres
+      continue-on-error: true
+
+# Ollama (local LLM) settings
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: gemma4:31b
+          temperature: 0.7
+          timeout-seconds: 120
