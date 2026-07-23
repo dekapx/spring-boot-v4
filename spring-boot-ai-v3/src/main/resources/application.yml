@@ -1,0 +1,16 @@
+spring:
+    application:
+        name: ai-agent-ollama
+server:
+    port: ${SERVER_PORT:8081}
+    servlet:
+        context-path: ${CONTEXT_PATH:/ai-agent-ollama}
+langchain4j:
+    ollama:
+        chat-model:
+            base-url: http://localhost:11434
+            model-name: gemma4:31b
+            temperature: 0.7
+            timeout: 120s
+            num-predict: 1024
+            num-ctx: 8192
