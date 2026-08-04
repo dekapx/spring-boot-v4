@@ -12,3 +12,9 @@ http://localhost:8081/order-agent/swagger-ui/index.html
   "message": "where is my order ORD-1001"
 }
 ```
+
+```json
+{
+"message": "load all orders"
+}
+```

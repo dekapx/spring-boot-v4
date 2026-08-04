@@ -5,6 +5,7 @@ import com.dekapx.apps.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,5 +15,9 @@ public class OrderService {
 
     public Optional<Order> getOrderByNumber(String orderNumber) {
         return orderRepository.findByOrderNumber(orderNumber);
+    }
+
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
     }
 }
