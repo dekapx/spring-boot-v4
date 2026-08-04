@@ -58,4 +58,10 @@ public class Order {
 
     @Column(name = "current_location")
     private String currentLocation;
+
+    @Column(name = "delivery_address")
+    private String deliveryAddress;
+
+    @Column(name = "cancellation_reason")
+    private String cancellationReason;
 }

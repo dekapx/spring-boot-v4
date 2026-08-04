@@ -1,69 +1,28 @@
-INSERT INTO orders (order_number, customer_name, item_name, quantity, total_amount, status, order_date,
-                    estimated_delivery_date, tracking_number, carrier, current_location)
-SELECT 'ORD-1001',
-       'Alice Johnson',
-       'Wireless Headphones',
-       1,
-       79.99,
-       'SHIPPED',
-       '2026-07-15',
-       '2026-07-24',
-       'TRK-9001',
-       'FedEx',
-       'Chicago, IL Distribution Center' WHERE NOT EXISTS (SELECT 1 FROM orders WHERE order_number = 'ORD-1001');
+INSERT INTO orders (
+    carrier, current_location, customer_name, estimated_delivery_date,
+    item_name, order_date, order_number, quantity, status,
+    total_amount, tracking_number, delivery_address, cancellation_reason
+) VALUES
+      ('FedEx', 'Memphis, TN', 'John Smith', '2026-08-05',
+       'Wireless Mouse', '2026-07-28', 'ORD-1001', 2, 'SHIPPED',
+       49.98, 'FX123456789US', '123 Main St, Springfield, IL 62701', NULL),
 
-INSERT INTO orders (order_number, customer_name, item_name, quantity, total_amount, status, order_date,
-                    estimated_delivery_date, tracking_number, carrier, current_location)
-SELECT 'ORD-1023',
-       'Bob Smith',
-       'Mechanical Keyboard',
-       1,
-       129.50,
-       'OUT_FOR_DELIVERY',
-       '2026-07-17',
-       '2026-07-22',
-       'TRK-9023',
-       'UPS',
-       'Local Delivery Facility - Dublin' WHERE NOT EXISTS (SELECT 1 FROM orders WHERE order_number = 'ORD-1023');
+      ('UPS', 'Louisville, KY', 'Emily Johnson', '2026-08-03',
+       'Mechanical Keyboard', '2026-07-27', 'ORD-1002', 1, 'IN_TRANSIT',
+       89.99, '1Z999AA10123456784', '456 Oak Ave, Denver, CO 80203', NULL),
 
-INSERT INTO orders (order_number, customer_name, item_name, quantity, total_amount, status, order_date,
-                    estimated_delivery_date, tracking_number, carrier, current_location)
-SELECT 'ORD-1045',
-       'Carla Diaz',
-       '4K Monitor',
-       1,
-       349.00,
-       'DELIVERED',
-       '2026-07-10',
-       '2026-07-14',
-       'TRK-9045',
-       'DHL',
-       'Delivered - Front Door' WHERE NOT EXISTS (SELECT 1 FROM orders WHERE order_number = 'ORD-1045');
+      ('DHL', 'Dublin, Ireland', 'Aoife Byrne', '2026-08-01',
+       '27-inch Monitor', '2026-07-25', 'ORD-1003', 1, 'DELIVERED',
+       259.50, 'DHL7654321IE', '78 Grafton Street, Dublin 2, Ireland', NULL),
 
-INSERT INTO orders (order_number, customer_name, item_name, quantity, total_amount, status, order_date,
-                    estimated_delivery_date, tracking_number, carrier, current_location)
-SELECT 'ORD-1050',
-       'Bob Smith',
-       'USB-C Hub',
-       2,
-       39.98,
-       'PLACED',
-       '2026-07-21',
-       '2026-07-29',
-       NULL,
-       NULL,
-       'Order Processing Center' WHERE NOT EXISTS (SELECT 1 FROM orders WHERE order_number = 'ORD-1050');
+      ('USPS', NULL, 'Michael Brown', NULL,
+       'Bluetooth Speaker', '2026-07-20', 'ORD-1004', 3, 'CANCELLED',
+       119.97, NULL, '789 Pine Rd, Austin, TX 78701', 'Customer requested cancellation'),
 
-INSERT INTO orders (order_number, customer_name, item_name, quantity, total_amount, status, order_date,
-                    estimated_delivery_date, tracking_number, carrier, current_location)
-SELECT 'ORD-1099',
-       'Diana Prince',
-       'Standing Desk',
-       1,
-       459.00,
-       'CANCELLED',
-       '2026-07-05',
-       NULL,
-       NULL,
-       NULL,
-       NULL WHERE NOT EXISTS (SELECT 1 FROM orders WHERE order_number = 'ORD-1099');
+      ('FedEx', 'Chicago, IL', 'Sarah Davis', '2026-08-10',
+       'Laptop Stand', '2026-07-30', 'ORD-1005', 1, 'PENDING',
+       34.99, NULL, '321 Elm St, Boston, MA 02108', NULL),
+
+      ('UPS', 'Newark, NJ', 'David Wilson', '2026-08-07',
+       'USB-C Hub', '2026-07-29', 'ORD-1006', 5, 'PROCESSING',
+       149.95, 'Z1234567890123456', '654 Maple Dr, Seattle, WA 98101', NULL);

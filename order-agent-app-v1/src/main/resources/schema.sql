@@ -10,5 +10,7 @@ create table if not exists orders (
     quantity integer,
     status varchar(255) not null,
     total_amount numeric(38, 2),
-    tracking_number varchar(255)
+    tracking_number varchar(255),
+    delivery_address varchar(255),
+    cancellation_reason varchar(255)
 );
