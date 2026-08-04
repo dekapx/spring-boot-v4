@@ -21,7 +21,7 @@ public class OrderAgentService {
     public String ask(@NotBlank(message = "Message should not be blank") String message) {
         return chatClient
 //                .prompt(ORDER_AGENT_PROMPT)
-                .prompt()// This can be overridden in ChatClientConfig
+                .prompt()// can be overridden in ChatClientConfig as defaultSystem
                 .user(message)
                 .tools(orderAgentTools)
                 .call()
