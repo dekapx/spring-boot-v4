@@ -36,3 +36,6 @@ spring:
           model: gemma4:31b
           temperature: 0.7
           timeout-seconds: 120
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: DEBUG
