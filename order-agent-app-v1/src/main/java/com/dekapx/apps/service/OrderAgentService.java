@@ -5,7 +5,10 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.client.advisor.api.Advisor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static com.dekapx.apps.common.Prompts.ORDER_AGENT_PROMPT;
 
@@ -23,11 +26,17 @@ public class OrderAgentService {
     public String ask(@NotBlank(message = "Message should not be blank") String message) {
         return chatClient
                 .prompt(ORDER_AGENT_PROMPT)
-                .advisors(new SimpleLoggerAdvisor())
-                .advisors(new TokenCountAdvisor())
+                .advisors(getAdvisors())
                 .user(message)
                 .tools(orderAgentTools)
                 .call()
                 .content();
+    }
+
+    private List<Advisor> getAdvisors() {
+        return List.of(
+                new SimpleLoggerAdvisor(),
+                new TokenCountAdvisor()
+        );
     }
 }
