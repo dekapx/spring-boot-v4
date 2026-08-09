@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/agent")
 @RequiredArgsConstructor
 public class OrderAgentController {
-
     private final OrderAgentService orderAgentService;
 
     @PostMapping("/chat")

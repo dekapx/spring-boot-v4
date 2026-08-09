@@ -33,9 +33,13 @@ spring:
       base-url: http://localhost:11434
       chat:
         options:
-          model: gemma4:31b # model name to use for chat
-          temperature: 0.7 # temperature for the model (0.0 to 1.0, higher values mean more randomness)
-          timeout-seconds: 120 # timeout for the model response in seconds
+          model: gemma4:31b   # model name to use for chat
+          temperature: 0.7    # Creative randomness (0.0 to 1.0)
+          top-p: 0.9          # Nucleus sampling threshold
+          top-k: 40           # Limits pool of top tokens
+          num-predict: 128    # Maximum number of tokens to generate (-1 for infinite)
+          num-ctx: 4096       # Size of the context window (tokens)
+          think: true         # Toggles reasoning mode for thinking models
 logging:
   level:
     org.springframework.ai.chat.client.advisor: DEBUG
