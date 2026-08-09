@@ -36,5 +36,4 @@ public class OrderAgentTools {
                 order.getStatus(),
                 order.getEstimatedDeliveryDate());
     }
-
 }

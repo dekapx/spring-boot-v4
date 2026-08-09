@@ -35,7 +35,6 @@ public class OrderAgentService {
                 .content();
     }
 
-
     /**
      * Build and return the OllamaOptions as chat Options for Ollama.
      * Best practice is to configure these options in the application.yml file
