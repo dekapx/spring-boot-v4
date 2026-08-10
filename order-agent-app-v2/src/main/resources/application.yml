@@ -1,0 +1,45 @@
+server:
+  port: ${SERVER_PORT:8081}
+  servlet:
+    context-path: ${CONTEXT_PATH:/order-agent}
+
+spring:
+  application:
+    name: order-agent
+
+  datasource:
+    username: ${POSTGRES_USERNAME:testuser}
+    password: ${POSTGRES_PASSWORD:passw0rd}
+    url: jdbc:postgresql://localhost:5432/testdb
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: always
+      platform: postgres
+      continue-on-error: true
+
+  # Ollama (local LLM) settings
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: gemma4:31b   # model name to use for chat
+          temperature: 0.7    # Creative randomness (0.0 to 1.0)
+          top-p: 0.9          # Nucleus sampling threshold
+          top-k: 40           # Limits pool of top tokens
+          num-predict: 128    # Maximum number of tokens to generate (-1 for infinite)
+          num-ctx: 4096       # Size of the context window (tokens)
+          think: true         # Toggles reasoning mode for thinking models
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: DEBUG
