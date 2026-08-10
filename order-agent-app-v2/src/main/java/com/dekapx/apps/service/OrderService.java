@@ -1,5 +1,6 @@
 package com.dekapx.apps.service;
 
+import com.dekapx.apps.exception.OrderNotFoundException;
 import com.dekapx.apps.model.Order;
 import com.dekapx.apps.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;

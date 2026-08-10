@@ -1,4 +1,4 @@
-package com.dekapx.apps.service;
+package com.dekapx.apps.exception;
 
 public class OrderNotFoundException extends RuntimeException {
     public OrderNotFoundException(String orderNumber) {

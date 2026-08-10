@@ -1,7 +1,7 @@
 package com.dekapx.apps.controller;
 
 import com.dekapx.apps.model.Order;
-import com.dekapx.apps.service.OrderNotFoundException;
+import com.dekapx.apps.exception.OrderNotFoundException;
 import com.dekapx.apps.service.OrderService;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
