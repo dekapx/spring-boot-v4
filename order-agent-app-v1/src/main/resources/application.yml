@@ -42,4 +42,5 @@ spring:
           think: true         # Toggles reasoning mode for thinking models
 logging:
   level:
+    com.dekapx.apps: INFO
     org.springframework.ai.chat.client.advisor: DEBUG

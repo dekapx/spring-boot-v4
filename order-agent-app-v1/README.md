@@ -11,6 +11,10 @@ http://localhost:8081/order-agent/swagger-ui/index.html
 {
   "message": "where is my order ORD12345?"
 }
+
+{
+  "answer": "Your order ORD24680 is currently being processed at our Dublin warehouse. It's expected to be delivered by August 18, 2026, via An Post."
+}
 ```
 
 ```json
