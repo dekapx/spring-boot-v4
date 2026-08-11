@@ -1,5 +1,12 @@
 # Order Agent — Spring Boot + Postgres + Ollama
 
+## Swagger UI
+http://localhost:8081/order-agent/swagger-ui/index.html
+
+```
+- http://localhost:8081/order-agent/api/agent/chat
+```
+
 ## How it works
 
 ```
@@ -43,7 +50,7 @@ classification code required, Spring AI + Ollama handle routing.
 mvn spring-boot:run
 ```
 
-The app starts on `http://localhost:8080`, creates/updates the `orders` table
+The app starts on `http://localhost:8081`, creates/updates the `orders` table
 (`ddl-auto: update`), and seeds three sample orders from `data.sql`
 (`ORD12345`, `ORD67890`, `ORD24680`).
 

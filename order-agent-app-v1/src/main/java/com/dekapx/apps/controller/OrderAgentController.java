@@ -5,6 +5,7 @@ import com.dekapx.apps.model.OrderAgentResponse;
 import com.dekapx.apps.service.OrderAgentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +18,8 @@ public class OrderAgentController {
     private final OrderAgentService orderAgentService;
 
     @PostMapping("/chat")
-    public OrderAgentResponse chat(@Valid @RequestBody OrderAgentRequest request) {
-        String response = this.orderAgentService.ask(request.message());
-        return new OrderAgentResponse(response);
+    public ResponseEntity<OrderAgentResponse> chat(@Valid @RequestBody OrderAgentRequest request) {
+        String reply = this.orderAgentService.ask(request.message());
+        return ResponseEntity.ok(new OrderAgentResponse(reply));
     }
 }

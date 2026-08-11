@@ -15,6 +15,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class OrderRepositoryTest {
+    public static final String ORDER_NUMBER = "ORD12345";
+    public static final String TRACKING_NUMBER = "TRK998877";
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -29,13 +32,26 @@ public class OrderRepositoryTest {
 
     @Test
     public void shouldReturnOrderForGivenOrderNumber() {
-        Optional<Order> order = this.orderRepository.findByOrderNumber("ORD-1001");
+        Optional<Order> order = this.orderRepository.findByOrderNumberIgnoreCase(ORDER_NUMBER);
         assertThat(order)
                 .isNotNull()
                 .satisfies(o ->
                 {
-                    assertThat(o.get().getOrderNumber()).isEqualTo("ORD-1001");
-                    assertThat(o.get().getCustomerName()).isEqualTo("Alice Johnson");
+                    assertThat(o.get().getOrderNumber()).isEqualTo(ORDER_NUMBER);
+                    assertThat(o.get().getCustomerName()).isEqualTo("Alice Walsh");
+                    assertThat(o.get().getItemName()).isEqualTo("Wireless Headphones");
+                });
+    }
+
+    @Test
+    public void shouldReturnOrderForGivenTrackingNumber() {
+        Optional<Order> order = this.orderRepository.findByTrackingNumberIgnoreCase(TRACKING_NUMBER);
+        assertThat(order)
+                .isNotNull()
+                .satisfies(o ->
+                {
+                    assertThat(o.get().getTrackingNumber()).isEqualTo(TRACKING_NUMBER);
+                    assertThat(o.get().getCustomerName()).isEqualTo("Alice Walsh");
                     assertThat(o.get().getItemName()).isEqualTo("Wireless Headphones");
                 });
     }

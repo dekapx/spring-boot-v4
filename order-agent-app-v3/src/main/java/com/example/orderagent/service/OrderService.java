@@ -1,18 +1,15 @@
-package com.dekapx.apps.service;
+package com.example.orderagent.service;
 
-import com.dekapx.apps.exception.OrderNotFoundException;
-import com.dekapx.apps.model.Order;
-import com.dekapx.apps.repository.OrderRepository;
+import com.example.orderagent.model.Order;
+import com.example.orderagent.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class OrderService {
+
     private final OrderRepository orderRepository;
 
     @Transactional(readOnly = true)
@@ -29,12 +26,15 @@ public class OrderService {
     @Transactional
     public Order changeDeliveryLocation(String orderNumber, String newAddress) {
         Order order = getOrderByNumber(orderNumber);
+
+        // Business rule: can't redirect an order that has already been delivered or cancelled
         String status = order.getStatus() == null ? "" : order.getStatus().toUpperCase();
         if (status.equals("DELIVERED") || status.equals("CANCELLED")) {
             throw new IllegalStateException(
                     "Cannot change delivery location for order " + orderNumber +
                             " because its status is " + order.getStatus());
         }
+
         order.setDeliveryAddress(newAddress);
         return orderRepository.save(order);
     }

@@ -1,19 +1,29 @@
-package com.dekapx.apps.service;
+package com.example.orderagent.tools;
 
-import com.dekapx.apps.exception.OrderNotFoundException;
-import com.dekapx.apps.model.Order;
+import com.example.orderagent.model.Order;
+import com.example.orderagent.service.OrderNotFoundException;
+import com.example.orderagent.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
-@Slf4j
+/**
+ * These methods are exposed to the Ollama chat model as callable "tools" (function calling).
+ * The model decides, based on the user's natural-language message, which of these
+ * to invoke and with what arguments. Spring AI handles the JSON schema generation,
+ * the tool-call round trip, and feeding the result back into the model for a final
+ * natural-language answer.
+ *
+ * Keep the returned Strings human-readable — they get fed straight back into the LLM,
+ * which then paraphrases them for the end user.
+ */
 @Component
 @RequiredArgsConstructor
-public class OrderAgentTools {
+@Slf4j
+public class OrderTools {
+
     private final OrderService orderService;
 
     @Tool(description = "Get the full details of an order (item, quantity, amount, dates, " +

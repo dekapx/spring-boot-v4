@@ -9,12 +9,18 @@ http://localhost:8081/order-agent/swagger-ui/index.html
 
 ```json
 {
-  "message": "where is my order ORD-1001"
+  "message": "where is my order ORD12345?"
 }
 ```
 
 ```json
 {
-"message": "load all orders"
+  "message": "can you give me the full details for ORD12345"
+}
+```
+
+```json
+{
+  "message": "please change delivery address for ORD24680 to 22 Baker Street, Dublin"
 }
 ```

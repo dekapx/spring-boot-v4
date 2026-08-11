@@ -1,0 +1,58 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-agent
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/orderdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+  sql:
+    init:
+      mode: always
+  jpa.defer-datasource-initialization: true
+
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: gemma4:31b
+        options:
+          temperature: 0.2
+          # Gemma 4 defaults to a 4K context window on Ollama regardless of its much
+          # larger 128K-256K capability - bump it explicitly or long conversations /
+          # RAG context will get silently truncated.
+          num-ctx: 8192
+      embedding:
+        model: nomic-embed-text
+      init:
+        # gemma4:31b is a ~20GB dense model - pulling it automatically on first
+        # startup can take a long time. Consider running `ollama pull gemma4:31b`
+        # and `ollama pull nomic-embed-text` manually beforehand instead.
+        pull-model-strategy: when_missing
+
+    vectorstore:
+      pgvector:
+        # Auto-creates the "vector_store" table + the pgvector extension on startup.
+        initialize-schema: true
+        dimensions: 768          # matches nomic-embed-text's output size
+        distance-type: COSINE_DISTANCE
+        index-type: HNSW
+
+logging:
+  level:
+    com.example.orderagent: INFO
+    org.springframework.ai: INFO
