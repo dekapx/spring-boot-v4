@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.dekapx.apps.common.LlmModelConstants.MODEL_NAME;
+import static com.dekapx.apps.common.LlmModelConstants.NUM_CTX;
+import static com.dekapx.apps.common.LlmModelConstants.NUM_PREDICT;
+import static com.dekapx.apps.common.LlmModelConstants.TEMPERATURE;
+import static com.dekapx.apps.common.LlmModelConstants.TOP_K;
+import static com.dekapx.apps.common.LlmModelConstants.TOP_P;
 import static com.dekapx.apps.common.Prompts.ORDER_AGENT_PROMPT;
 
 @Slf4j
@@ -43,10 +49,12 @@ public class OrderAgentService {
      */
     private OllamaOptions buildOllamaOptions() {
         return OllamaOptions.builder()
-                .model("gemma4:31b")
-                .temperature(0.7)
-                .topP(0.9)
-                .topK(40)
+                .model(MODEL_NAME)
+                .temperature(TEMPERATURE)
+                .topP(TOP_P)
+                .topK(TOP_K)
+                .numPredict(NUM_PREDICT)
+                .numCtx(NUM_CTX)
                 .build();
     }
 
