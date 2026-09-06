@@ -13,6 +13,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
 public class ChatClientConfig {
+    /**
+     * Creates a ChatMemoryRepository bean using JdbcTemplate and PostgresChatMemoryRepositoryDialect.
+     * It will also create and store the chat memory in spring_ai_chat_memory table in PostgreSQL database.
+     *
+     * @param jdbcTemplate <code>JdbcTemplate</code> instance for database operations.
+     * @return <code>ChatMemoryRepository</code> instance.
+     */
     @Bean
     public ChatMemoryRepository chatMemoryRepository(JdbcTemplate jdbcTemplate) {
         return JdbcChatMemoryRepository.builder()
@@ -21,6 +28,13 @@ public class ChatClientConfig {
                 .build();
     }
 
+    /**
+     * Creates a ChatMemory bean using the provided ChatMemoryRepository.
+     * The chat memory will store a maximum of 10 messages.
+     *
+     * @param chatMemoryRepository <code>ChatMemoryRepository</code> instance for storing chat memory.
+     * @return <code>ChatMemory</code> instance.
+     */
     @Bean
     public ChatMemory chatMemory(ChatMemoryRepository chatMemoryRepository) {
         return MessageWindowChatMemory.builder()
@@ -29,6 +43,14 @@ public class ChatClientConfig {
                 .build();
     }
 
+    /**
+     * Creates a ChatClient bean using the provided ChatClient.Builder and ChatMemory.
+     * The ChatClient will use the MessageChatMemoryAdvisor to manage chat memory.
+     *
+     * @param builder    <code>ChatClient.Builder</code> instance for building the ChatClient.
+     * @param chatMemory <code>ChatMemory</code> instance for managing chat memory.
+     * @return <code>ChatClient</code> instance.
+     */
     @Bean
     public ChatClient chatClient(ChatClient.Builder builder, ChatMemory chatMemory) {
         return builder
