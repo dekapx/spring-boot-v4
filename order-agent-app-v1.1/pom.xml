@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>com.dekapx.apps</groupId>
-    <artifactId>order-agent-app-v1</artifactId>
+    <artifactId>order-agent-app-v1.1</artifactId>
     <version>1.0.0</version>
-    <name>order-agent-app-v1</name>
+    <name>order-agent-app-v1.1</name>
     <description>Spring Boot + Postgres + Ollama Order Agent REST API</description>
 
     <properties>

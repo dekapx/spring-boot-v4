@@ -15,8 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class OrderRepositoryTest {
-    public static final String ORDER_NUMBER = "ORD12345";
-    public static final String TRACKING_NUMBER = "TRK998877";
+    public static final String ORDER_NUMBER = "ORD-1001";
+    public static final String TRACKING_NUMBER = "FX123456789US";
 
     @Autowired
     private OrderRepository orderRepository;
@@ -38,8 +38,8 @@ public class OrderRepositoryTest {
                 .satisfies(o ->
                 {
                     assertThat(o.get().getOrderNumber()).isEqualTo(ORDER_NUMBER);
-                    assertThat(o.get().getCustomerName()).isEqualTo("Alice Walsh");
-                    assertThat(o.get().getItemName()).isEqualTo("Wireless Headphones");
+                    assertThat(o.get().getCustomerName()).isEqualTo("John Smith");
+                    assertThat(o.get().getItemName()).isEqualTo("Wireless Mouse");
                 });
     }
 
@@ -51,8 +51,8 @@ public class OrderRepositoryTest {
                 .satisfies(o ->
                 {
                     assertThat(o.get().getTrackingNumber()).isEqualTo(TRACKING_NUMBER);
-                    assertThat(o.get().getCustomerName()).isEqualTo("Alice Walsh");
-                    assertThat(o.get().getItemName()).isEqualTo("Wireless Headphones");
+                    assertThat(o.get().getCustomerName()).isEqualTo("John Smith");
+                    assertThat(o.get().getItemName()).isEqualTo("Wireless Mouse");
                 });
     }
 }
