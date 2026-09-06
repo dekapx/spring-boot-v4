@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: order-agent-app
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/order_agent_db}
+    username: ${DB_USERNAME:order_agent}
+    password: ${DB_PASSWORD:order_agent}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: public
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  ai:
+    ollama:
+      base-url: ${OLLAMA_BASE_URL:http://localhost:11434}
+      chat:
+        model: ${OLLAMA_CHAT_MODEL:qwen3-coder:30b}
+        options:
+          temperature: 0.2
+      embedding:
+        model: ${OLLAMA_EMBEDDING_MODEL:nomic-embed-text}
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 768
+        initialize-schema: true
+        schema-name: public
+        table-name: vector_store
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.dekapx.apps.orderagent: INFO
+    org.springframework.ai: INFO

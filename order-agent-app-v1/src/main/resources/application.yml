@@ -45,6 +45,11 @@ spring:
           num-predict: 4096       # Maximum number of tokens to generate (-1 for infinite)
           num-ctx: 16384          # Size of the context window (tokens)
           think: true             # Toggles reasoning mode for thinking models
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
 logging:
   level:
     com.dekapx.apps: INFO

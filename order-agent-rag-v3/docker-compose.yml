@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: order-agent-postgres
+    environment:
+      POSTGRES_DB: order_agent_db
+      POSTGRES_USER: order_agent
+      POSTGRES_PASSWORD: order_agent
+    ports:
+      - "5432:5432"
+    volumes:
+      - order-agent-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U order_agent -d order_agent_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+#  ollama:
+#    image: ollama/ollama:latest
+#    container_name: order-agent-ollama
+#    ports:
+#      - "11434:11434"
+#    volumes:
+#      - order-agent-ollama:/root/.ollama
+    # After first start, pull the required models:
+    #   docker exec -it order-agent-ollama ollama pull qwen3-coder:30b
+    #   docker exec -it order-agent-ollama ollama pull nomic-embed-text
+
+volumes:
+  order-agent-pgdata:
+  order-agent-ollama:

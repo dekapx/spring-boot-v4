@@ -1,0 +1,41 @@
+Order Agent Knowledge Base
+
+# Delivery & Shipping Policy
+
+Delivery Address Changes:
+Customers may request a change to the delivery address for an order as long as the order
+status is NOT "DELIVERED" or "CANCELLED". Once an order is out for delivery, changes are
+still allowed but may delay delivery by 1-2 additional business days because the package
+must be rerouted through the carrier's network.
+
+Order Statuses:
+Orders move through the following statuses in order:
+1. CREATED - order has been placed but not yet confirmed by the warehouse.
+2. CONFIRMED - payment captured and inventory reserved.
+3. PROCESSING - order is being picked and packed at the fulfillment center.
+4. SHIPPED - order has left the warehouse and has a tracking number assigned.
+5. OUT_FOR_DELIVERY - the local courier has the package and will deliver same day.
+6. DELIVERED - the package has been handed to the customer.
+7. CANCELLED - the order was cancelled before shipment, see cancellationReason field.
+8. RETURNED - the customer returned the item after delivery.
+
+Estimated Delivery Dates:
+Estimated delivery dates are calculated based on the carrier's standard transit time from
+the fulfillment center to the delivery address, and may shift if the delivery address is
+changed after the order has shipped.
+
+Cancelling an Order:
+Orders can only be cancelled while in CREATED, CONFIRMED, or PROCESSING status. Once an
+order is SHIPPED it cannot be cancelled directly; the customer must wait for delivery and
+then initiate a return instead. When an order is cancelled, the `cancellationReason` field
+should be populated with a short human-readable reason (e.g. "Customer requested",
+"Out of stock", "Payment failed").
+
+Returns:
+Returned items are tracked by moving the order status to RETURNED. Refund processing time
+is typically 5-7 business days after the returned item is received at the warehouse.
+
+Agent Guidance:
+When a customer asks to cancel an order, the agent should explain the current policy above
+and, if cancellation is not possible because the order already shipped, offer to help them
+track the shipment or start a return once it is delivered instead.
