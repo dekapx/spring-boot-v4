@@ -13,6 +13,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
 public class ChatClientConfig {
+    private static final int MAX_MESSAGES = 10;
+
     /**
      * Creates a ChatMemoryRepository bean using JdbcTemplate and PostgresChatMemoryRepositoryDialect.
      * It will also create and store the chat memory in spring_ai_chat_memory table in PostgreSQL database.
@@ -39,7 +41,7 @@ public class ChatClientConfig {
     public ChatMemory chatMemory(ChatMemoryRepository chatMemoryRepository) {
         return MessageWindowChatMemory.builder()
                 .chatMemoryRepository(chatMemoryRepository)
-                .maxMessages(10)
+                .maxMessages(MAX_MESSAGES)
                 .build();
     }
 
