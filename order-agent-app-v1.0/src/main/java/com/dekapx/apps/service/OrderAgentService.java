@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.client.advisor.api.Advisor;
-import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.ai.ollama.api.OllamaChatOptions;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,8 +47,8 @@ public class OrderAgentService {
      *
      * @return object of <code>OllamaOptions</code>
      */
-    private OllamaOptions buildOllamaOptions() {
-        return OllamaOptions.builder()
+    private OllamaChatOptions buildOllamaOptions() {
+        return OllamaChatOptions.builder()
                 .model(MODEL_NAME)
                 .temperature(TEMPERATURE)
                 .topP(TOP_P)
